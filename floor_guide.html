@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>樓層導覽 FloorNavigation</title>
+    <link rel="stylesheet" href="style/application.css" />
+    <link rel="stylesheet" href="style/header.css" />
+    <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
+    <style>
+      #building div {
+        font-size: 24px;
+        font-weight: bolder;
+        border: 2px solid black;
+        width: 300px;
+        height: 80px;
+        text-align: center;
+        line-height: 80px;
+        position: relative;
+      }
+
+      #i {
+        width: 450px;
+        height: 400px;
+      }
+
+      #building {
+        padding-left: 100px;
+        padding-top: 80px;
+        /* position: absolute; */
+      }
+
+      #desc li {
+        font-size: 24px;
+        line-height: 60px;
+      }
+
+      #descbox {
+        margin: 100px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="screen">
+      <div class="menu">
+        <div class="logo">
+          <span>AIOT17社區<br />後台管理系統 </span>
+        </div>
+        <div class="nav">
+          <ul>
+            <li>
+              <a href="listadmin">管理員清單<span>Admin List</span></a>
+            </li>
+            <li>
+              <a href="listinfo">公佈欄<span>Info Board</span></a>
+            </li>
+            <li>
+              <a href="userlist">住戶清單<span>User List</span></a>
+            </li>
+            <li>
+              <a href="packagelist">包裹清單<span>Parcel List</span></a>
+            </li>
+            <li>
+              <a href="listbooking">場地租借<span>Booking Service</span></a>
+            </li>
+            <li>
+              <a href="floor_guide.jsp"
+                >樓層導覽<span>Floor Navigation</span></a
+              >
+            </li>
+            <li>
+              <a href="logout">登出<span>Log Out</span></a>
+            </li>
+          </ul>
+        </div>
+        <footer>
+          <a href="searchNews"><img src="image/" title="新聞" /></a>
+          <a href="userPackage"
+            ><img src="image/" title="測試前端"
+          /></a>
+        </footer>
+      </div>
+      <div id="building">
+        <div class="f" id="8f" value="8">8F</div>
+        <div class="f" id="7f" value="7">7F</div>
+        <div class="f" id="6f" value="6">6F</div>
+        <div class="f" id="5f" value="5">5F</div>
+        <div class="f" id="4f" value="4">4F</div>
+        <div class="f" id="3f" value="3">3F</div>
+        <div class="f" id="2f" value="2">2F</div>
+        <div class="f" id="1f" value="1">1F</div>
+        <div class="f" id="b1" value="b1">B1</div>
+        <div class="f" id="b2" value="b2">B2</div>
+      </div>
+      <div id="descbox">
+          <div id="desc">
+            <h1 id="t">請選擇樓層(樓層導覽)</h1>
+            <img src="" id="i">
+          </div>
+      </div>
+    </div>
+    <script>
+      var stop;
+      var c = 0;
+      var im;
+      function play(img){
+          stop = window.setInterval(function(){
+            if(c==3){
+              c=0;
+            }
+            $("#i").attr("src","image/"+img[c]);
+            c+=1;
+        },2000);
+      }
+      
+      $(".f").hover(function(){
+        $("#i").show()
+        $(this).css("backgroundColor","lightgreen");
+        if ($(this).attr("value")=="8"){
+          $("#t").html("8F swimming / 泳池")
+          im = ['pool.jpg','gym.jpg','hallway.jpg']
+        }
+        else if ($(this).attr("value")=="7"){
+          $("#t").html("7F resident / 住戶區")
+          im = ['pool.jpg','lobby.jpg','hallway2.jpg']
+        }
+        else if ($(this).attr("value")=="6"){
+          $("#t").html("6F resident / 住戶區")
+          im = ['pool.jpg','lobby.jpg','hallway2.jpg']
+        }
+        else if ($(this).attr("value")=="5"){
+          $("#t").html("5F resident / 住戶區")
+          im = ['pool.jpg','lobby.jpg','hallway2.jpg']
+        }
+        else if ($(this).attr("value")=="4"){
+          $("#t").html("4F resident / 住戶區")
+          im = ['pool.jpg','lobby.jpg','hallway2.jpg']
+        }
+        else if ($(this).attr("value")=="3"){
+          $("#t").html("3F resident / 住戶區")
+          im = ['pool.jpg','lobby.jpg','hallway2.jpg']
+        }
+        else if ($(this).attr("value")=="2"){
+          $("#t").html("2F Gym / 健身房")
+          im = ['pool.jpg','lobby.jpg','hallway2.jpg']
+        }
+        else if ($(this).attr("value")=="1"){
+          $("#t").html("1F Lobby / 大廳")
+          im = ['pool.jpg','lobby.jpg','hallway2.jpg']
+        }
+        else if ($(this).attr("value")=="b1"){
+          $("#t").html("b1 地下停車場(充電樁)")
+          im = ['pool.jpg','lobby.jpg','hallway2.jpg']
+        }
+        else {
+          $("#t").html("b2 地下停車場")
+          im = ['pool.jpg','lobby.jpg','hallway2.jpg']
+        }
+      clearInterval(stop);
+      play(im);
+      },function(){
+        clearInterval(stop);
+        $(this).css("backgroundColor","#CAEDEB");
+        $("#i").hide()
+        $("#t").html("請選擇樓層(樓層導覽)")
+      });
+    </script>
+  </body>
+</html>
