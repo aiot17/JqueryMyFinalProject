@@ -1,0 +1,16 @@
+@import url(https://fonts.googleapis.com/earlyaccess/cwtexyen.css);
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: black;
+    font-size: 24px;
+    font-family: cwTeXYen, sans-serif;
+}
+
+.screen {
+    display: flex;
+    height: 100vh;
+    background-color: #e0ebeb;
+}
